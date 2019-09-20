@@ -2,6 +2,13 @@ package com.etoitau.leetcode.five;
 
 import java.util.*;
 
+/**
+ * LeetCode Problem:
+ * https://leetcode.com/problems/longest-palindromic-substring/
+ *
+ * Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+ *
+ */
 public class Solution {
     // brute force approach for stress testing
     // for reference:
