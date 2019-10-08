@@ -28,21 +28,11 @@ class MainTest {
         expected = Arrays.asList("p", "q", "r", "s");
         result = sol.letterCombinations(in);
         assertTrue(expected.equals(result));
+
+        in = "89";
+        expected = Arrays.asList("tw", "tx", "ty", "tz", "uw", "ux", "uy", "uz", "vw", "vx", "vy", "vz");
+        result = sol.letterCombinations(in);
+        assertTrue(expected.equals(result));
     }
 
-    @Test
-    void inc3Test() {
-        Solution sol = new Solution();
-        int[] in;
-        int[] out;
-
-
-        in = new int[]{0, 0, 0};
-        sol.inc3(in);
-        sol.inc3(in);
-        sol.inc3(in);
-        out = new int[]{0, 1, 0};
-        assertTrue(Arrays.equals(in, out));
-
-    }
 }
