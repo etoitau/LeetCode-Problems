@@ -1,64 +1,35 @@
 # Uses python3
 
+# LeetCode Problem 41 - First Missing Positive
+# 
+# Result:
+# Runtime: 32 ms, faster than 93.10%
+# Memory Usage: 12.7 MB, less than 100.00%
+#
+# Description:
+# Given an unsorted integer array, find the smallest missing positive integer.
+
+
+from typing import List
+
 class Solution:
     def firstMissingPositive(self, nums: List[int]) -> int:
-        minVal = min(nums)
-        # only interested in integers 1 and larger, if less, set them aside
-        if minVal < 1:
-            start = partition(nums: List[int], 0, len(nums), part: int)
-        if nums[start] != 1:
-            return 1
-        else:
-            return recursiveSearch(nums, minVal, start, len(nums))
+        return Solution.specialSort(nums) + 1
 
-    def recursiveSearch(nums: List[int], minVal: int, start: int, endEx: int) -> int:
-        # if search is terminated
-        if endEx - start == 1:
-            if nums[start] == minVal:
-                return minVal + len(nums) - start)
-            else:
-                return minVal
-        
-        halfLength = (endEx - start) // 2
-
-        # partition about middle value
-        partition(nums, start, endEx, minVal + halfLength)   
-    
-        if nums[start + halfLength] == minVal + halfLength:
-            return recusiveSearch(nums, minVal + halfLength, start + halfLength + 1, endEx))
-        else:
-            return recursiveSearch(nums, minVal, start, start + halfLength)
-    
-
-    def partition(nums: List[int], start: int, endEx: int, partVal: int):
-        """
-        partition similar to quicksort
-        reserve nums[start] for partVal, if found
-        go through rest, sorting less than or greater than partVal, put partVal at start if found
-        swap start to middle and return middle index
-        """
-        div = start + 1
-        cursor = start + 1
-        end = endEx - 1
-        while cursor <= end:
-            if nums[cursor] < partVal:
+    @staticmethod
+    def specialSort(nums: List[int]) -> int:
+        cursor = 0
+        endEx = len(nums)
+        while cursor < endEx:
+            if nums[cursor] == cursor + 1:
+                # if already correct value here, consider next
                 cursor += 1
-                div += 1
-            elif nums[cursor] == partVal:
-                nums[start], nums[cursor] = nums[cursor], nums[start]
+            elif nums[cursor] < 1 or nums[cursor] > endEx or nums[nums[cursor] - 1] == nums[cursor]:
+                # if this value is negative or too big, or a repeat, banish to end and forget
+                nums[cursor], nums[endEx - 1] = nums[endEx - 1], nums[cursor]
+                endEx -= 1
             else:
-                nums[cursor], nums[end] = nums[end], nums[cursor]
-                end -= 1
-        return div
-    
-
-
-
-
-def main():
-    """starts_here"""
-    print("Hello World")
-
-if __name__ == '__main__':
-    """starts here"""
-    main()
+                # swap this value into the spot where it belongs
+                nums[nums[cursor] - 1], nums[cursor] = nums[cursor], nums[nums[cursor] - 1]
+        # let user know where valid numbers end        
+        return endEx
