@@ -1,5 +1,5 @@
-# Sample Project
-Description
+# First Missing Positive
+Given and unsorted integer array, find the smallest missing positive integer
 
 ## License
 Copyright 2019 [Kyle Chatman](http://www.kchatman.com)
