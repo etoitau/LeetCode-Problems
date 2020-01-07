@@ -1,5 +1,5 @@
 # Code Sample
-Provided for everlaw job application by [Kyle Chatman](http://www.kchatman.com)
+Provided for Everlaw job application by [Kyle Chatman](http://www.kchatman.com)
 
 ## Introduction
 Please note I have about 20 repositories shared publicly on [GitHub](https://github.com/etoitau)
